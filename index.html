@@ -338,6 +338,74 @@
           </div>
         </section>
 
+        <!-- Voluntários -->
+        <section id="voluntarios" class="content-section">
+          <div class="section-header">
+            <h2>Gestão de Voluntários</h2>
+            <p>Cadastro e gerenciamento de voluntários</p>
+          </div>
+
+          <div class="form-container">
+            <h3>Cadastrar Novo Voluntário</h3>
+            <form id="form-voluntario" onsubmit="cadastrarVoluntario(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Nome Completo *</label>
+                  <input type="text" name="nome" required />
+                </div>
+                <div class="form-group">
+                  <label>CPF *</label>
+                  <input
+                    type="text"
+                    name="cpf"
+                    placeholder="000.000.000-00"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" name="email" />
+                </div>
+                <div class="form-group">
+                  <label>Telefone</label>
+                  <input
+                    type="tel"
+                    name="telefone"
+                    placeholder="(00) 00000-0000"
+                  />
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Cadastrar Voluntário
+              </button>
+            </form>
+          </div>
+
+          <div class="table-container" style="margin-top: 30px">
+            <h3>Voluntários Cadastrados</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>CPF</th>
+                  <th>Email</th>
+                  <th>Telefone</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="lista-voluntarios">
+                <tr>
+                  <td colspan="5" style="text-align: center; color: #7f8c8d">
+                    Nenhum voluntário cadastrado
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
 </main>
     <script src="src/script/script.js"></script>
   </body>
