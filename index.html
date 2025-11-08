@@ -270,6 +270,74 @@
           </div>
         </section>
 
+        <!-- Instituições -->
+        <section id="instituicoes" class="content-section">
+          <div class="section-header">
+            <h2>Instituições Beneficiadas</h2>
+            <p>Gestão de instituições que recebem doações</p>
+          </div>
+
+          <div class="form-container">
+            <h3>Cadastrar Nova Instituição</h3>
+            <form id="form-instituicao" onsubmit="cadastrarInstituicao(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Nome da Instituição *</label>
+                  <input type="text" name="nome" required />
+                </div>
+                <div class="form-group">
+                  <label>CNPJ *</label>
+                  <input
+                    type="text"
+                    name="cnpj"
+                    placeholder="00.000.000/0000-00"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" name="email" />
+                </div>
+                <div class="form-group">
+                  <label>Telefone</label>
+                  <input type="tel" name="telefone" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Endereço</label>
+                <input type="text" name="endereco" />
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Cadastrar Instituição
+              </button>
+            </form>
+          </div>
+
+          <div class="table-container" style="margin-top: 30px">
+            <h3>Instituições Cadastradas</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>CNPJ</th>
+                  <th>Email</th>
+                  <th>Telefone</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="lista-instituicoes">
+                <tr>
+                  <td colspan="5" style="text-align: center; color: #7f8c8d">
+                    Nenhuma instituição cadastrada
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
 </main>
     <script src="src/script/script.js"></script>
   </body>
