@@ -752,7 +752,63 @@
             </table>
           </div>
         </section>
+ <!-- Campanhas -->
+        <section id="campanhas" class="content-section">
+          <div class="section-header">
+            <h2>Campanhas de Arrecadação</h2>
+            <p>Organize e gerencie campanhas</p>
+          </div>
 
+          <div class="form-container">
+            <h3>Criar Nova Campanha</h3>
+            <form id="form-campanha" onsubmit="cadastrarCampanha(event)">
+              <div class="form-group">
+                <label>Nome da Campanha *</label>
+                <input type="text" name="nome" required />
+              </div>
+              <div class="form-group">
+                <label>Descrição</label>
+                <textarea name="descricao" rows="3"></textarea>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Data de Início *</label>
+                  <input type="date" name="data_inicio" required />
+                </div>
+                <div class="form-group">
+                  <label>Data de Término</label>
+                  <input type="date" name="data_fim" />
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Criar Campanha
+              </button>
+            </form>
+          </div>
+
+          <div class="table-container" style="margin-top: 30px">
+            <h3>Campanhas Ativas</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Descrição</th>
+                  <th>Início</th>
+                  <th>Término</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="lista-campanhas">
+                <tr>
+                  <td colspan="6" style="text-align: center; color: #7f8c8d">
+                    Nenhuma campanha cadastrada
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
 
 </main>
     <script src="src/script/script.js"></script>
