@@ -541,6 +541,72 @@
             </table>
           </div>
         </section>
+  <!-- Distribuições -->
+        <section id="distribuicoes" class="content-section">
+          <div class="section-header">
+            <h2>Distribuições</h2>
+            <p>Controle de distribuições para instituições</p>
+          </div>
+
+          <div class="form-container">
+            <h3>Registrar Nova Distribuição</h3>
+            <form
+              id="form-distribuicao"
+              onsubmit="registrarDistribuicao(event)"
+            >
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Instituição *</label>
+                  <select
+                    name="id_instituicao"
+                    id="select-instituicao-dist"
+                    required
+                  >
+                    <option value="">Selecione uma instituição</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Data da Distribuição *</label>
+                  <input type="date" name="data_distribuicao" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Responsável *</label>
+                <input type="text" name="responsavel" required />
+              </div>
+              <div class="form-group">
+                <label>Observações</label>
+                <textarea name="observacoes" rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn btn-success">
+                Registrar Distribuição
+              </button>
+            </form>
+          </div>
+
+          <div class="table-container" style="margin-top: 30px">
+            <h3>Distribuições Realizadas</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Instituição</th>
+                  <th>Responsável</th>
+                  <th>Observações</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="lista-distribuicoes">
+                <tr>
+                  <td colspan="5" style="text-align: center; color: #7f8c8d">
+                    Nenhuma distribuição registrada
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
 
 </main>
     <script src="src/script/script.js"></script>
