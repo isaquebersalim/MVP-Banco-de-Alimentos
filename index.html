@@ -810,6 +810,105 @@
           </div>
         </section>
 
+         <!-- Relatórios -->
+        <section id="relatorios" class="content-section">
+          <div class="section-header">
+            <h2>Relatórios Gerenciais</h2>
+            <p>Análises e estatísticas do sistema</p>
+          </div>
+
+          <div class="dashboard-cards">
+            <div class="card">
+              <h3 style="font-size: 16px; margin-bottom: 15px">
+                📊 Doações por Período
+              </h3>
+              <div class="form-row">
+                <input
+                  type="date"
+                  id="rel-data-inicio"
+                  style="
+                    padding: 8px;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                  "
+                />
+                <input
+                  type="date"
+                  id="rel-data-fim"
+                  style="
+                    padding: 8px;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                  "
+                />
+              </div>
+              <button
+                class="btn btn-primary btn-small"
+                style="margin-top: 10px"
+                onclick="gerarRelatorioGeral()"
+              >
+                Gerar Relatório
+              </button>
+            </div>
+
+            <div class="card">
+              <h3 style="font-size: 16px; margin-bottom: 15px">
+                📈 Top Doadores
+              </h3>
+              <p style="color: #7f8c8d; font-size: 14px">
+                Doadores mais ativos do mês
+              </p>
+              <button
+                class="btn btn-primary btn-small"
+                style="margin-top: 10px"
+                onclick="gerarRelatorioDoadores()"
+              >
+                Visualizar
+              </button>
+            </div>
+
+            <div class="card">
+              <h3 style="font-size: 16px; margin-bottom: 15px">
+                🏢 Instituições Atendidas
+              </h3>
+              <p style="color: #7f8c8d; font-size: 14px">
+                Relatório de distribuições
+              </p>
+              <button
+                class="btn btn-primary btn-small"
+                style="margin-top: 10px"
+                onclick="gerarRelatorioInstituicoes()"
+              >
+                Visualizar
+              </button>
+            </div>
+
+            <div class="card">
+              <h3 style="font-size: 16px; margin-bottom: 15px">
+                📦 Estoque Atual
+              </h3>
+              <p style="color: #7f8c8d; font-size: 14px">
+                Status completo do estoque
+              </p>
+              <button
+                class="btn btn-primary btn-small"
+                style="margin-top: 10px"
+                onclick="gerarRelatorioEstoque()"
+              >
+                Visualizar
+              </button>
+            </div>
+          </div>
+
+          <div class="chart-container">
+            <h3>Relatório Gerado</h3>
+            <div id="relatorio-resultado" class="chart-placeholder">
+              <p>Selecione um tipo de relatório acima para visualizar</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
 </main>
     <script src="src/script/script.js"></script>
   </body>
