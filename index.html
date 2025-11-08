@@ -606,6 +606,152 @@
             </table>
           </div>
         </section>
+<!-- Alimentos -->
+        <section id="alimentos" class="content-section">
+          <div class="section-header">
+            <h2>Controle de Alimentos</h2>
+            <p>Gerencie os alimentos disponíveis</p>
+          </div>
+
+          <div class="form-container">
+            <h3>Cadastrar Alimento</h3>
+            <form id="form-alimento" onsubmit="cadastrarAlimento(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Nome do Alimento *</label>
+                  <input type="text" name="nome" required />
+                </div>
+                <div class="form-group">
+                  <label>Categoria *</label>
+                  <select name="categoria" required>
+                    <option value="">Selecione</option>
+                    <option value="Grãos">Grãos</option>
+                    <option value="Enlatados">Enlatados</option>
+                    <option value="Massas">Massas</option>
+                    <option value="Óleos">Óleos</option>
+                    <option value="Bebidas">Bebidas</option>
+                    <option value="Outros">Outros</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Quantidade *</label>
+                  <input type="number" step="0.01" name="quantidade" required />
+                </div>
+                <div class="form-group">
+                  <label>Unidade de Medida *</label>
+                  <select name="unidade" required>
+                    <option value="kg">Quilogramas (kg)</option>
+                    <option value="un">Unidades (un)</option>
+                    <option value="l">Litros (l)</option>
+                    <option value="cx">Caixas (cx)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Data de Validade</label>
+                <input type="date" name="validade" />
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Cadastrar Alimento
+              </button>
+            </form>
+          </div>
+
+          <div class="table-container" style="margin-top: 30px">
+            <h3>Alimentos Cadastrados</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Categoria</th>
+                  <th>Quantidade</th>
+                  <th>Unidade</th>
+                  <th>Validade</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="lista-alimentos">
+                <tr>
+                  <td colspan="6" style="text-align: center; color: #7f8c8d">
+                    Nenhum alimento cadastrado
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Movimentações -->
+        <section id="movimentacoes" class="content-section">
+          <div class="section-header">
+            <h2>Movimentações de Estoque</h2>
+            <p>Histórico de entradas e saídas</p>
+          </div>
+
+          <div class="table-container">
+            <h3>Últimas Movimentações</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Tipo</th>
+                  <th>Alimento</th>
+                  <th>Quantidade</th>
+                  <th>Responsável</th>
+                </tr>
+              </thead>
+              <tbody id="lista-movimentacoes">
+                <tr>
+                  <td colspan="5" style="text-align: center; color: #7f8c8d">
+                    Nenhuma movimentação registrada
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Categorias -->
+        <section id="categorias" class="content-section">
+          <div class="section-header">
+            <h2>Categorias de Alimentos</h2>
+            <p>Gerencie as categorias de produtos</p>
+          </div>
+
+          <div class="form-container">
+            <h3>Adicionar Nova Categoria</h3>
+            <form id="form-categoria" onsubmit="cadastrarCategoria(event)">
+              <div class="form-group">
+                <label>Nome da Categoria *</label>
+                <input type="text" name="nome_categoria" required />
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Adicionar Categoria
+              </button>
+            </form>
+          </div>
+
+          <div class="table-container" style="margin-top: 30px">
+            <h3>Categorias Cadastradas</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome da Categoria</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="lista-categorias">
+                <tr>
+                  <td colspan="2" style="text-align: center; color: #7f8c8d">
+                    Nenhuma categoria cadastrada
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
 
 
 </main>
