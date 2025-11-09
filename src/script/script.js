@@ -381,3 +381,29 @@ function atualizarListaColetas() {
                 </tr>`;
         }).join("");
 }
+
+function atualizarListaDistribuicoes() {
+        const tbody = document.getElementById("lista-distribuicoes");
+        if (dados.distribuicoes.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #7f8c8d;">Nenhuma distribuição registrada</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = dados.distribuicoes.map((d) => {
+            const instituicao = dados.instituicoes.find((x) => x.id == d.id_instituicao);
+            return 
+                `<tr>
+                    <td>${new Date(d.data_distribuicao).toLocaleDateString("pt-BR")}</td>
+                    <td>${instituicao ? instituicao.nome : "N/A"}</td>
+                    <td>${d.responsavel}</td>
+                    <td>${d.observacoes || "-"}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-danger btn-small" onclick="excluirDistribuicao(${
+                                d.id
+                            })">Excluir</button>
+                        </div>
+                    </td>
+                </tr>`;
+        }).join("");
+}
