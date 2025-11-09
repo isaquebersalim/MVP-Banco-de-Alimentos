@@ -95,3 +95,21 @@ function cadastrarInstituicao(e) {
         atualizarSelects();
         alert("Instituição cadastrada com sucesso!");
 }
+
+function cadastrarVoluntario(e) {
+        e.preventDefault();
+        const form = e.target;
+        const voluntario = {
+          id: Date.now(),
+          nome: form.nome.value,
+          cpf: form.cpf.value,
+          email: form.email.value,
+          telefone: form.telefone.value,
+        };
+
+        dados.voluntarios.push(voluntario);
+        salvarDados();
+        form.reset();
+        atualizarListaVoluntarios();
+        alert("Voluntário cadastrado com sucesso!");
+}
