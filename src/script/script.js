@@ -746,3 +746,7 @@ function gerarRelatorioEstoque() {
             </div>
         </div>`;
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+        carregarDados();
+    });
