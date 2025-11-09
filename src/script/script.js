@@ -1,4 +1,3 @@
-      // Dados em memória
       let dados = {
         doadores: [],
         instituicoes: [],
@@ -11,7 +10,6 @@
         campanhas: [],
       };
 
-      // Carregar dados do localStorage
       function carregarDados() {
         const dadosSalvos = localStorage.getItem("bancoAlimentosDados");
         if (dadosSalvos) {
@@ -21,7 +19,27 @@
         }
       }
 
-      // Salvar dados no localStorage
       function salvarDados() {
         localStorage.setItem("bancoAlimentosDados", JSON.stringify(dados));
       }
+
+     function toggleSubmenu(id) {
+        const submenu = document.getElementById("submenu-" + id);
+        const arrow = event.currentTarget.querySelector(".menu-arrow");
+
+        submenu.classList.toggle("open");
+        arrow.classList.toggle("open");
+      }
+
+    function showSection(sectionId, event) {
+        if (event) event.stopPropagation();
+
+    document
+        .querySelectorAll(".content-section")
+        .forEach((s) => s.classList.remove("active"));
+    document
+        .querySelectorAll(".menu-item")
+        .forEach((m) => m.classList.remove("active"));
+    document
+        .querySelectorAll(".submenu-item")
+        .forEach((m) => m.classList.remove("active"));}
