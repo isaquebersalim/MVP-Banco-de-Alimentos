@@ -245,3 +245,27 @@ function atualizarListaDoadores() {
             </tr>`
         ).join("");
 }
+
+function atualizarListaInstituicoes() {
+    const tbody = document.getElementById("lista-instituicoes");
+    if (dados.instituicoes.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #7f8c8d;">Nenhuma instituição cadastrada</td></tr>';
+            return;
+        }
+
+    tbody.innerHTML = dados.instituicoes.map((i) => 
+            `<tr>
+                <td>${i.nome}</td>
+                <td>${i.cnpj}</td>
+                <td>${i.email || "-"}</td>
+                <td>${i.telefone || "-"}</td>
+                <td>
+                    <div class="action-buttons">
+                        <button class="btn btn-danger btn-small" onclick="excluirInstituicao(${
+                            i.id
+                        })">Excluir</button>
+                    </div>
+                </td>
+            </tr>`
+          ).join("");
+}
