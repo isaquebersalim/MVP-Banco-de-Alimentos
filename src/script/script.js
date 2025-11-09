@@ -267,7 +267,7 @@ function atualizarListaInstituicoes() {
                     </div>
                 </td>
             </tr>`
-          ).join("");
+        ).join("");
 }
 
 function atualizarListaVoluntarios() {
@@ -291,7 +291,7 @@ function atualizarListaVoluntarios() {
                     </div>
                 </td>
             </tr>`
-          ).join("");
+        ).join("");
 }
 
 function atualizarListaDoacoes() {
@@ -323,4 +323,32 @@ function atualizarListaDoacoes() {
                 </td>
             </tr>`;
         }).join("");
+}
+
+function atualizarListaAlimentos() {
+        const tbody = document.getElementById("lista-alimentos");
+        if (dados.alimentos.length === 0) {
+          tbody.innerHTML =
+            '<tr><td colspan="6" style="text-align: center; color: #7f8c8d;">Nenhum alimento cadastrado</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = dados.alimentos.map((a) => 
+            `<tr>
+                <td>${a.nome}</td>
+                <td>${a.categoria}</td>
+                <td>${a.quantidade}</td>
+                <td>${a.unidade}</td>
+                <td>${
+                        a.validade? new Date(a.validade).toLocaleDateString("pt-BR"): "-"
+                }</td>
+                <td>
+                    <div class="action-buttons">
+                        <button class="btn btn-danger btn-small" onclick="excluirAlimento(${
+                            a.id
+                        })">Excluir</button>
+                    </div>
+                </td>
+            </tr>`
+        ).join("");
 }
