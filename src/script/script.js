@@ -34,23 +34,15 @@ function toggleSubmenu(id) {
 function showSection(sectionId, event) {
     if (event) event.stopPropagation();
 
-    document
-        .querySelectorAll(".content-section")
-        .forEach((s) => s.classList.remove("active"));
-    document
-        .querySelectorAll(".menu-item")
-        .forEach((m) => m.classList.remove("active"));
-    document
-        .querySelectorAll(".submenu-item")
-        .forEach((m) => m.classList.remove("active"));
+    document.querySelectorAll(".content-section").forEach((s) => s.classList.remove("active"));
+    document.querySelectorAll(".menu-item").forEach((m) => m.classList.remove("active"));
+    document.querySelectorAll(".submenu-item").forEach((m) => m.classList.remove("active"));
 
     document.getElementById(sectionId).classList.add("active");
          if (event) {
           event.currentTarget.classList.add("active");
         } else {
-          document
-            .querySelector([onclick="showSection('${sectionId}')"])
-            ?.classList.add("active");
+          document.querySelector([onclick="showSection('${sectionId}')"])?.classList.add("active");
         }
 }
 
@@ -58,12 +50,12 @@ function cadastrarDoador(e) {
     e.preventDefault();
     const form = e.target;
     const doador = {
-        id: Date.now(),
-        nome: form.nome.value,
-        cpf: form.cpf.value,
-        email: form.email.value,
-        telefone: form.telefone.value,
-        endereco: form.endereco.value,
+            id: Date.now(),
+            nome: form.nome.value,
+            cpf: form.cpf.value,
+            email: form.email.value,
+            telefone: form.telefone.value,
+            endereco: form.endereco.value,
         };
 
     dados.doadores.push(doador);
@@ -79,12 +71,12 @@ function cadastrarInstituicao(e) {
     e.preventDefault();
     const form = e.target;
     const instituicao = {
-        id: Date.now(),
-        nome: form.nome.value,
-        cnpj: form.cnpj.value,
-        email: form.email.value,
-        telefone: form.telefone.value,
-        endereco: form.endereco.value,
+            id: Date.now(),
+            nome: form.nome.value,
+            cnpj: form.cnpj.value,
+            email: form.email.value,
+            telefone: form.telefone.value,
+            endereco: form.endereco.value,
         };
 
     dados.instituicoes.push(instituicao);
@@ -100,11 +92,11 @@ function cadastrarVoluntario(e) {
     e.preventDefault();
     const form = e.target;
     const voluntario = {
-        id: Date.now(),
-        nome: form.nome.value,
-        cpf: form.cpf.value,
-        email: form.email.value,
-        telefone: form.telefone.value,
+            id: Date.now(),
+            nome: form.nome.value,
+            cpf: form.cpf.value,
+            email: form.email.value,
+            telefone: form.telefone.value,
         };
 
     dados.voluntarios.push(voluntario);
@@ -118,12 +110,12 @@ function registrarDoacao(e) {
     e.preventDefault();
     const form = e.target;
     const doacao = {
-        id: Date.now(),
-        id_doador: form.id_doador.value,
-        id_instituicao: form.id_instituicao.value,
-        tipo: form.tipo.value,
-        quantidade: form.quantidade.value,
-        data_doacao: form.data_doacao.value,
+            id: Date.now(),
+            id_doador: form.id_doador.value,
+            id_instituicao: form.id_instituicao.value,
+            tipo: form.tipo.value,
+            quantidade: form.quantidade.value,
+            data_doacao: form.data_doacao.value,
         };
 
     dados.doacoes.push(doacao);
@@ -138,12 +130,12 @@ function cadastrarAlimento(e) {
     e.preventDefault();
     const form = e.target;
     const alimento = {
-        id: Date.now(),
-        nome: form.nome.value,
-        categoria: form.categoria.value,
-        quantidade: form.quantidade.value,
-        unidade: form.unidade.value,
-        validade: form.validade.value,
+            id: Date.now(),
+            nome: form.nome.value,
+            categoria: form.categoria.value,
+            quantidade: form.quantidade.value,
+            unidade: form.unidade.value,
+            validade: form.validade.value,  
         };
 
     dados.alimentos.push(alimento);
@@ -158,11 +150,11 @@ function registrarColeta(e) {
     e.preventDefault();
     const form = e.target;
     const coleta = {
-        id: Date.now(),
-        id_doador: form.id_doador.value,
-        data_coleta: form.data_coleta.value,
-        responsavel: form.responsavel.value,
-        observacoes: form.observacoes.value,
+            id: Date.now(),
+            id_doador: form.id_doador.value,
+            data_coleta: form.data_coleta.value,
+            responsavel: form.responsavel.value,
+            observacoes: form.observacoes.value,    
         };
 
     dados.coletas.push(coleta);
@@ -170,4 +162,22 @@ function registrarColeta(e) {
     form.reset();
     atualizarListaColetas();
     alert("Coleta registrada com sucesso!");
+}
+
+function registrarDistribuicao(e) {
+    e.preventDefault();
+    const form = e.target;
+    const distribuicao = {
+            id: Date.now(),
+            id_instituicao: form.id_instituicao.value,
+            data_distribuicao: form.data_distribuicao.value,
+            responsavel: form.responsavel.value,
+            observacoes: form.observacoes.value,
+        };
+
+    dados.distribuicoes.push(distribuicao);
+    salvarDados();
+    form.reset();
+    atualizarListaDistribuicoes();
+    alert("Distribuição registrada com sucesso!");
 }
