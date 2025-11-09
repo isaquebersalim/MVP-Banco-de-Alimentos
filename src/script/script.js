@@ -426,3 +426,36 @@ function atualizarListaCategorias() {
             </tr>`
         ).join("");
 }
+
+function atualizarListaCampanhas() {
+    const tbody = document.getElementById("lista-campanhas");
+    if (dados.campanhas.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #7f8c8d;">Nenhuma campanha cadastrada</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = dados.campanhas.map((c) => {
+            const hoje = new Date();
+            const inicio = new Date(c.data_inicio);
+            const fim = c.data_fim ? new Date(c.data_fim) : null;
+            let status = "Ativa";
+
+            if (fim && hoje > fim) status = "Encerrada";
+            else if (hoje < inicio) status = "Aguardando";
+
+            return 
+            
+            `<tr>
+                <td>${c.nome}</td>
+                <td>${c.descricao || "-"}</td>
+                <td>${new Date(c.data_inicio).toLocaleDateString("pt-BR")}</td>
+                <td>${c.data_fim? new Date(c.data_fim).toLocaleDateString("pt-BR"): "-"}</td>
+                <td><span style="padding: 4px 8px; background: ${status === "Ativa" ? "#27ae60" : "#95a5a6"}; color: white; border-radius: 4px; font-size: 12px;">${status}</span></td>
+                <td>
+                    <div class="action-buttons">
+                        <button class="btn btn-danger btn-small" onclick="excluirCampanha(${c.id})">Excluir</button>
+                    </div>
+                </td>
+            </tr>`;
+        }).join("");
+}
