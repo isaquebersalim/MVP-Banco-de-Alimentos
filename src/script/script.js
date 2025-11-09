@@ -181,3 +181,18 @@ function registrarDistribuicao(e) {
     atualizarListaDistribuicoes();
     alert("Distribuição registrada com sucesso!");
 }
+
+function cadastrarCategoria(e) {
+    e.preventDefault();
+    const form = e.target;
+    const categoria = {
+            id: Date.now(),
+            nome_categoria: form.nome_categoria.value,
+        };
+
+    dados.categorias.push(categoria);
+    salvarDados();
+    form.reset();
+    atualizarListaCategorias();
+    alert("Categoria cadastrada com sucesso!");
+}
