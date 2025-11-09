@@ -269,3 +269,27 @@ function atualizarListaInstituicoes() {
             </tr>`
           ).join("");
 }
+
+function atualizarListaVoluntarios() {
+        const tbody = document.getElementById("lista-voluntarios");
+        if (dados.voluntarios.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #7f8c8d;">Nenhum voluntário cadastrado</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = dados.voluntarios.map((v) => 
+            `<tr>
+                <td>${v.nome}</td>
+                <td>${v.cpf}</td>
+                <td>${v.email || "-"}</td>
+                <td>${v.telefone || "-"}</td>
+                <td>
+                    <div class="action-buttons">
+                        <button class="btn btn-danger btn-small" onclick="excluirVoluntario(${
+                            v.id
+                        })">Excluir</button>
+                    </div>
+                </td>
+            </tr>`
+          ).join("");
+}
