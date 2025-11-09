@@ -214,3 +214,10 @@ function cadastrarCampanha(e) {
     atualizarListaCampanhas();
     alert("Campanha criada com sucesso!");
 }
+
+function atualizarDashboard() {
+    document.getElementById("total-doadores").textContent = dados.doadores.length;
+    document.getElementById("total-doacoes").textContent = dados.doacoes.length;
+    document.getElementById("total-alimentos").textContent = dados.alimentos.length;
+    document.getElementById("total-instituicoes").textContent = dados.instituicoes.length;
+}
