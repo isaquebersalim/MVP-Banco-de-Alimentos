@@ -53,3 +53,24 @@ function showSection(sectionId, event) {
             ?.classList.add("active");
         }
 }
+
+function cadastrarDoador(e) {
+        e.preventDefault();
+        const form = e.target;
+        const doador = {
+          id: Date.now(),
+          nome: form.nome.value,
+          cpf: form.cpf.value,
+          email: form.email.value,
+          telefone: form.telefone.value,
+          endereco: form.endereco.value,
+        };
+
+        dados.doadores.push(doador);
+        salvarDados();
+        form.reset();
+        atualizarListaDoadores();
+        atualizarDashboard();
+        atualizarSelects();
+        alert("Doador cadastrado com sucesso!");
+}
