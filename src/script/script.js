@@ -779,25 +779,7 @@ function gerarRelatorioEstoque() {
         </div>`;
 }
 
-async function carregarDoadores() {
-  const resposta = await fetch("https://mvp-banco-de-alimentos.vercel.app/");
-  const doadores = await resposta.json();
-  console.log(doadores);
-}
 
-async function cadastrarDoador() {
-  const nome = document.getElementById("nome").value;
-  const cpf = document.getElementById("cpf").value;
-
-  await fetch("https://mvp-banco-de-alimentos.vercel.app/", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ nome, cpf })
-  });
-
-  alert("Doador cadastrado!");
-  carregarDoadores();
-}
 
 window.addEventListener("DOMContentLoaded", () => {
         carregarDados();
