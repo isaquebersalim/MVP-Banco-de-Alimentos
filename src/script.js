@@ -1,3 +1,6 @@
+import { supabase } from "./api/supabase.js";
+window.onload = atualizarListagensGerais;
+
 let dados = {
   doadores: [],
   instituicoes: [],
@@ -10,18 +13,18 @@ let dados = {
   campanhas: [],
 };
 
-function carregarDados() {
-  const dadosSalvos = localStorage.getItem("bancoAlimentosDados");
-  if (dadosSalvos) {
-    dados = JSON.parse(dadosSalvos);
-    atualizarDashboard();
-    atualizarTodasListagens();
-  }
-}
+// function carregarDados() {
+//   const dadosSalvos = localStorage.getItem("bancoAlimentosDados");
+//   if (dadosSalvos) {
+//     dados = JSON.parse(dadosSalvos);
+//     atualizarDashboard();
+//     atualizarTodasListagens();
+//   }
+// }
 
-function salvarDados() {
-  localStorage.setItem("bancoAlimentosDados", JSON.stringify(dados));
-}
+// function salvarDados() {
+//   localStorage.setItem("bancoAlimentosDados", JSON.stringify(dados));
+// }
 
 function toggleSubmenu(id) {
   const submenu = document.getElementById("submenu-" + id);
@@ -54,6 +57,7 @@ function showSection(sectionId, event) {
   }
 }
 
+// Cadastro de Doadores
 function cadastrarDoador(e) {
   e.preventDefault();
   const form = e.target;
@@ -120,13 +124,28 @@ function cadastrarDoador(e) {
     endereco,
   };
 
-  dados.doadores.push(doador);
-  salvarDados();
-  form.reset();
-  atualizarListaDoadores();
-  atualizarDashboard();
-  atualizarSelects();
-  alert("Doador cadastrado com sucesso!");
+  // dados.doadores.push(doador);
+  // salvarDados();
+  // Database SupaBase
+
+  const { error } = await supabase.from("doadores").insert([{
+  nome,
+  cpf,
+  email,
+  telefone,
+  endereco
+}]);
+
+if (error) {
+  alert("Erro ao cadastrar no banco!");
+  console.error(error);
+  return;
+}
+
+alert("Doador cadastrado com sucesso!");
+atualizarListagensGerais();
+form.reset();
+
 }
 // Validação do CPF
 
@@ -148,6 +167,7 @@ function validarCPF(cpf) {
   return resto === parseInt(cpf.charAt(10));
 }
 
+// Cadastro de Instituicao
 function cadastrarInstituicao(e) {
   e.preventDefault();
   const form = e.target;
@@ -169,6 +189,7 @@ function cadastrarInstituicao(e) {
   alert("[translate:Instituição cadastrada com sucesso!]");
 }
 
+// Cadastro de Voluntario
 function cadastrarVoluntario(e) {
   e.preventDefault();
   const form = e.target;
@@ -207,6 +228,7 @@ function registrarDoacao(e) {
   alert("[translate:Doação registrada com sucesso!]");
 }
 
+// Cadastro de Alimento
 function cadastrarAlimento(e) {
   e.preventDefault();
   const form = e.target;
@@ -570,10 +592,24 @@ function atualizarListaCampanhas() {
     .join("");
 }
 
-function excluirDoador(id) {
-  if (confirm("[translate:Deseja realmente excluir este doador?]")) {
-    dados.doadores = dados.doadores.filter((d) => d.id !== id);
-    salvarDados();
+async function excluirDoador(id) {
+  if (!confirm("Deseja realmente excluir este doador?")) return;
+
+  const { error } = await supabase
+    .from("doadores")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    alert("Erro ao excluir!");
+    console.error(error);
+    return;
+  }
+
+  atualizarListagensGerais();
+}
+
+
     atualizarListaDoadores();
     atualizarDashboard();
     atualizarSelects();
@@ -895,4 +931,30 @@ function gerarRelatorioEstoque() {
 window.addEventListener("DOMContentLoaded", () => {
   carregarDados();
 });
+
+// Carregar dados DB
+
+async function atualizarListagensGerais() {
+  const { data: doadores } = await supabase.from("doadores").select("*");
+  dados.doadores = doadores || [];
+
+  atualizarTodasListagens();
+  atualizarDashboard();
+}
+
+
+async function atualizarListagensGerais() {
+  dados.doadores = await carregarDoadoresDB();
+  dados.instituicoes = await carregarInstituicoesDB();
+  dados.voluntarios = await carregarVoluntariosDB();
+  dados.doacoes = await carregarDoacoesDB();
+  dados.alimentos = await carregarAlimentosDB();
+  dados.coletas = await carregarColetasDB();
+  dados.distribuicoes = await carregarDistribuicoesDB();
+  dados.categorias = await carregarCategoriasDB();
+  dados.campanhas = await carregarCampanhasDB();
+
+  atualizarTodasListagens();
+  atualizarDashboard();
+}
 
