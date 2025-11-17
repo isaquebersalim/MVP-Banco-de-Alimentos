@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MVP-Banco de Alimento Londrina</title>
-    <link rel="stylesheet" href="src/style/forms.css" />
-    <link rel="stylesheet" href="src/style/main.css" />
-    <link rel="stylesheet" href="src/style/menuLateral.css" />
-    <link rel="stylesheet" href="src/style/table.css" />
+    <link rel="stylesheet" href="../style/forms.css">
+    <link rel="stylesheet" href="../style/main.css">
+    <link rel="stylesheet" href="../style/menuLateral.css">
+    <link rel="stylesheet" href="../style/table.css">
     <style>
       * {
         margin: 0;
@@ -211,11 +211,14 @@
                 </div>
                 <div class="form-group">
                   <label>CPF *</label>
+                  <!-- Limitar caracteres -->
                   <input
                     type="text"
+                    maxlength="11"
                     name="cpf"
                     placeholder="000.000.000-00"
-                    required
+                    required 
+                     
                   />
                 </div>
               </div>
@@ -227,6 +230,7 @@
                 <div class="form-group">
                   <label>Telefone</label>
                   <input
+                  maxlength="12"
                     type="tel"
                     name="telefone"
                     placeholder="(00) 00000-0000"
@@ -288,6 +292,7 @@
                 <div class="form-group">
                   <label>CNPJ *</label>
                   <input
+                  maxlength="14"
                     type="text"
                     name="cnpj"
                     placeholder="00.000.000/0000-00"
@@ -301,8 +306,9 @@
                   <input type="email" name="email" />
                 </div>
                 <div class="form-group">
+
                   <label>Telefone</label>
-                  <input type="tel" name="telefone" />
+                  <input type="tel" name="telefone" maxlength="12"/>
                 </div>
               </div>
               <div class="form-group">
@@ -374,6 +380,7 @@
                     type="tel"
                     name="telefone"
                     placeholder="(00) 00000-0000"
+                    maxlength="12"
                   />
                 </div>
               </div>
@@ -910,6 +917,12 @@
       </main>
     </div>
 </main>
-    <script src="src/script/script.js"></script>
+
+<!-- Database SupaBase -->
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+ <script type="module" src="../src/api/supabase.js"></script>
+ <script type="module" src="../src/script.js"></script>
+
+
   </body>
 </html>
